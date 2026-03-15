@@ -1,0 +1,26 @@
+package edu.kis.powp.jobs2d.drivers.adapter;
+
+import edu.kis.legacy.drawer.shape.ILine;
+import edu.kis.powp.jobs2d.AbstractDriver;
+import edu.kis.powp.jobs2d.Job2dDriver;
+
+public class FiguresJaneAdapter extends AbstractDriver {
+    private final Job2dDriver driver;
+
+    public FiguresJaneAdapter(Job2dDriver driver) {
+        super(0,0);
+        this.driver = driver;
+    }
+
+    @Override
+    public void operateTo(int x, int y){
+        driver.setPosition(getX(), getY());
+        driver.operateTo(x,y);
+        this.setPosition(x,y);
+    }
+
+    @Override
+    public String toString(){
+        return "Figure Jane Adapter";
+    }
+}
