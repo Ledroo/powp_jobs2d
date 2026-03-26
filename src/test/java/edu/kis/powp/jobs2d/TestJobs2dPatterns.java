@@ -9,6 +9,10 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.ComplexCommand;
+import static edu.kis.powp.jobs2d.command.ShapesFactory.drawSquare;
+import static edu.kis.powp.jobs2d.command.ShapesFactory.drawTriangle;
+
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.FiguresJaneAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -41,6 +45,15 @@ public class TestJobs2dPatterns {
 			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
 			FiguresJaneAdapter adapter = new FiguresJaneAdapter(currentDriver);
 			FiguresJane.figureScript(adapter);
+		});
+
+		application.addTest("ShapesFactory",e -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand square = drawSquare(currentDriver, 5, 5, 30);
+			square.execute();
+
+			ComplexCommand triangle = drawTriangle(currentDriver,0,-10,-10,-30,-30,0);
+			triangle.execute();
 		});
 	}
 

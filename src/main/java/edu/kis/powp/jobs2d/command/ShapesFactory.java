@@ -8,7 +8,7 @@ public class ShapesFactory {
 
     }
 
-    public ComplexCommand drawSquare(Job2dDriver driver, int x, int y, int length){
+    public static ComplexCommand drawSquare(Job2dDriver driver, int x, int y, int length){
         ComplexCommand complexCommand = new ComplexCommand();
 
         complexCommand.addCommand(new SetPositionCommand(driver, x, y));
@@ -20,7 +20,7 @@ public class ShapesFactory {
         return complexCommand;
     }
 
-    public ComplexCommand drawTriangle(
+    public static ComplexCommand drawTriangle(
             Job2dDriver driver,
             int x1, int y1,
             int x2, int y2,
